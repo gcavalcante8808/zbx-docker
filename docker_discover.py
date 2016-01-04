@@ -6,7 +6,7 @@ from docker import Client
 
 cli = Client('http://127.0.0.1:2376')
 
-containers = [ {'#CONTAINER': container['Id'], '#CONTNAME': container['Names'][0]} 
+containers = [ {'{#CONTAINER}': container['Id'], '{#CONTNAME}':  container['Names'][0]} 
                for container in cli.containers(all=True) ]
 
-print(json.dumps(containers))
+print(json.dumps({'data': containers}))

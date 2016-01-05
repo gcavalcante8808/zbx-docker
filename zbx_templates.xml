@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2016-01-04T17:42:23Z</date>
+    <date>2016-01-05T17:30:22Z</date>
     <groups>
         <group>
             <name>Docker Containers</name>
@@ -108,13 +108,13 @@
             <items>
                 <item>
                     <name>Container Status</name>
-                    <type>0</type>
+                    <type>7</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>docker.container.info[{HOST.HOST}, State]</key>
-                    <delay>30</delay>
-                    <history>7</history>
+                    <key>docker.container.info[{HOST.HOST}, State.Status]</key>
+                    <delay>300</delay>
+                    <history>1</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -158,7 +158,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{docker_container:docker.container.info[{HOST.HOST}, State].iregexp(&quot;\&quot;Running\&quot;: true&quot;,#2)}=0</expression>
+            <expression>{docker_container:docker.container.info[{HOST.HOST}, State.Status].iregexp(&quot;running&quot;,#2)}=0</expression>
             <name>Container: {HOST.NAME} Unavailable for 10 Minutes or More</name>
             <url/>
             <status>0</status>

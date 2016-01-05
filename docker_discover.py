@@ -7,7 +7,7 @@ from docker import Client
 def print_discover(addr):
     cli = Client(addr)
 
-    containers = [ {'{#CONTAINER}': container['Id'], '{#CONTNAME}':  container['Names'][0]} 
+    containers = [ {'{#CONTAINER}': container['Id'], '{#CONTNAME}':  container['Names'][0].split('/')[1] } 
                for container in cli.containers(all=True) ]
 
     print(json.dumps({'data': containers}))

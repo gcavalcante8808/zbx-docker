@@ -4,11 +4,34 @@ import argparse
 from docker import Client
 
 # A Simple module that returns attributes values for given ids.
+
+
+def get_nested_elements(info, elements):
+    # Function to traverse dictionaries and print when value is 
+    # not a dict (instead it's a str)
+#    pdb.set_trace()
+
+    if isinstance(elements, str):
+        keys = elements.split('.')
+    else:
+        keys = elements
+
+    for key in keys:
+        value = info[key]
+        if isinstance(value, dict):
+            keys.pop(0)
+            if keys:
+                get_nested_elements(value, keys)
+        elif value:
+            print(value)
+        else:
+            return('Not Encountered Value')
+
 def get_container_attr(container_id, attr, addr):
     # Find a container info and return desired attr.
     cli = Client(addr)
     container = cli.inspect_container(container_id)
-    print(json.dumps(container[attr]))
+    get_nested_elements(container, attr)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

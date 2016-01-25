@@ -35,8 +35,8 @@ To install this solution you'll need to do the following steps:
 
 1. Clone the repository into a folder (usually with git clone command);
 2. Copy 'docker.conf' into your zabbix agent configuration directory (/etc/zabbix/zabbix.conf.d/ if using official packages from zabbix sia)
-3. Copy 'docker\_discover.py' to /tmp;
-4. Copy 'docker\_inf.py' to /tmp';
+3. Copy 'docker\_discover.py' to /data (Or change the path on the docker.conf file);
+4. Copy 'docker\_inf.py' to /data';
 5. Import Zabbix Template available in the directory into your Zabbix Environment;
 6. Link the template against the hosts that have containers running.
 

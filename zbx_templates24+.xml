@@ -112,7 +112,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>docker.container.info[{HOST.HOST}, State.Status]</key>
+                    <key>docker.container.inspect[{HOST.HOST}, State.Status]</key>
                     <delay>300</delay>
                     <history>1</history>
                     <trends>365</trends>
@@ -158,7 +158,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{docker_container:docker.container.info[{HOST.HOST}, State.Status].iregexp(&quot;running&quot;,#2)}=0</expression>
+            <expression>{docker_container:docker.container.inspect[{HOST.HOST}, State.Status].iregexp(&quot;running&quot;,#2)}=0</expression>
             <name>Container: {HOST.NAME} Unavailable for 10 Minutes or More</name>
             <url/>
             <status>0</status>

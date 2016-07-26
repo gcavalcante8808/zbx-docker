@@ -5,7 +5,7 @@ from docker import Client
 
 # A Simple module that returns ids for all docker containers.
 def print_discover(addr):
-    cli = Client(addr)
+    cli = Client(base_url=addr, version='auto')
 
     containers = [ {'{#CONTAINER}': container['Id'], '{#CONTNAME}':  container['Names'][-1:][0].strip('/') } 
                for container in cli.containers(all=True) ]

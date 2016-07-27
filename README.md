@@ -13,7 +13,7 @@ With this solution, you can start to monitor your docker containers on your Zabb
 Requirements
 ------------
 
-For now, the docker server should have an HTTP API point available on the host (the scripts uses the http://127.0.0.1:2376 as default api address).
+For now, the docker server should have an HTTP API point available on the host (the scripts uses the http://127.0.0.1:2375 as default api address).
 
 Python 2.7+ (Including Python 3+) is required, and the Docker-Py is required as well.
 

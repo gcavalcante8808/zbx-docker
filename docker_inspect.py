@@ -22,7 +22,7 @@ def get_nested_elements(info, elements):
             keys.pop(0)
             if keys:
                 get_nested_elements(value, keys)
-        elif value:
+        elif value is not None:
             print(value)
         else:
             return('Not Encountered Value')

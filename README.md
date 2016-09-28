@@ -33,18 +33,23 @@ Installation
 
 To install this solution you'll need to do the following steps:
 
-1. Clone the repository into a folder (usually with git clone command);
-2. Copy 'docker.conf' into your zabbix agent configuration directory (/etc/zabbix/zabbix.conf.d/ if using official packages from zabbix sia)
-3. Copy 'docker\_discover.py' to /data (Or change the path on the docker.conf file);
-4. Copy 'docker\_inf.py' to /data';
-5. Import Zabbix Template available in the directory into your Zabbix Environment;
+1. Clone the repository into "/data" folder:
+    
+    git clone https://github.com/gcavalcante8808/zbx-docker.git /data
+    
+5. Import Zabbix Template available in the directory into your Zabbix Environment: 
+
+    * docker17.xml is the template used for Docker 1.7;
+    * docker19+.xml is the template used for Docker 1.9 and above;
+    * Docker 1.8 MAY be supported by the Docker 1.7 template, but it wasn't tested.
+    
 6. Link the template against the hosts that have containers running.
 
 Testing the Solution
 --------------------
 
-If the target host was configured correctly and the zabbix has received the templates, in some minutes (10 per default) new hosts will
-appear in the 'Docker Container' Group automatically; for now, the templates just monitor the 'State' of the containers.
+If the target host was configured correctly and the zabbix has received the templates, in a hour new items will
+appear in the Host automatically; for now, the templates have support for stats/metrics, discover and the inspect module.
 
 If you want to implement another items, verify the output of the command 'docker inspect <CONTAINER>' to see what can be queried about a 
 container.
@@ -56,6 +61,8 @@ Other Notes
 docker-py package.
 
  * On Python 3.3 installations, the pip and easy\_install are already present in the setup.
+ 
+ * Python 2.6 is not officially supported ... but you can install requests and argparse libs into it and try to use the solution;
 
  * For Now, Its not Possible to get nested items, like 'State.Running'.
 

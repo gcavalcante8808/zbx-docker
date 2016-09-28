@@ -36,14 +36,16 @@ To install this solution you'll need to do the following steps:
 1. Clone the repository into "/data" folder:
     
     git clone https://github.com/gcavalcante8808/zbx-docker.git /data
-    
-5. Import Zabbix Template available in the directory into your Zabbix Environment: 
+
+2. Copy the content of the docker.conf file into the the configuration of your zabbix Agent. If your Zabbix-Agent is configured to include files in a specific Directory, you can copy the file directly to there; 
+
+3. Import Zabbix Template available in the directory into your Zabbix Environment: 
 
     * docker17.xml is the template used for Docker 1.7;
     * docker19+.xml is the template used for Docker 1.9 and above;
     * Docker 1.8 MAY be supported by the Docker 1.7 template, but it wasn't tested.
     
-6. Link the template against the hosts that have containers running.
+4. Link the template against the hosts that have containers running.
 
 Testing the Solution
 --------------------

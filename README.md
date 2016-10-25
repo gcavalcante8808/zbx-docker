@@ -33,9 +33,9 @@ Installation
 
 To install this solution you'll need to do the following steps:
 
-1. Clone the repository into "/data" folder:
+1. Clone the repository into "/usr/share/src/zbx-docker" folder:
     
-    git clone https://github.com/gcavalcante8808/zbx-docker.git /data
+    git clone https://github.com/gcavalcante8808/zbx-docker.git /usr/share/src/zbx-docker
 
 2. Copy the content of the docker.conf file into the the configuration of your zabbix Agent. If your Zabbix-Agent is configured to include files in a specific Directory, you can copy the file directly to there; 
 

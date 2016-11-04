@@ -42,7 +42,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if not args.addr:
-        addr = 'http://127.0.0.1:2375'
+        addr = 'http://127.0.0.1:2376'
     
     get_container_attr(container_id=args.cid, attr=args.attr, addr=addr)
 

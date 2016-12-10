@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 import json
 import argparse
-from docker import Client
+import docker
 
 # A Simple module that returns ids for all docker containers.
 def print_discover(addr):
-    cli = Client(base_url=addr, version='auto')
+    cli = docker.from_env()
 
     containers = [ {'{#CONTAINER}': container['Id'], '{#CONTNAME}':  container['Names'][-1:][0].strip('/'), '{#IMAGE}': container['Image'] } 
                for container in cli.containers(all=True) ]

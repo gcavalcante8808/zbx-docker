@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import json
 import argparse
-from docker import Client
+import docker
 
 # A Simple module that returns attributes values for given ids.
 
@@ -9,7 +9,6 @@ from docker import Client
 def get_nested_elements(info, elements):
     # Function to traverse dictionaries and print when value is 
     # not a dict (instead it's a str)
-#    pdb.set_trace()
 
     if isinstance(elements, str):
         keys = elements.split('.')
@@ -29,7 +28,7 @@ def get_nested_elements(info, elements):
 
 def get_container_attr(container_id, attr, addr):
     # Find a container info and return desired attr.
-    cli = Client(base_url=addr, version='auto')
+    cli = docker.from_env()
     container = cli.inspect_container(container_id)
     get_nested_elements(container, attr)
 

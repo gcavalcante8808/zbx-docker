@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import json
 import argparse
-from docker import Client
+import docker
 
 # A Simple module that returns stats for given ids.
 
@@ -29,7 +29,7 @@ def get_nested_elements(info, elements):
 
 def get_container_attr(container_id, attr, addr):
     # Find a container info and return desired attr.
-    cli = Client(base_url=addr, version='auto')
+    cli = docker.from_env()
     container = cli.stats(container_id, stream=False)
     get_nested_elements(container, attr)
 

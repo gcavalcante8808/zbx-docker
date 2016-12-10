@@ -61,7 +61,7 @@ After the zabbix-agent installation, continue the proccess with the following st
 1. Create the docker-stats container:
 
 ```
-docker run -d --name docker-monit gcavalcante8808/zabbix-docker-monit
+docker run -d --name  zabbix-docker-monit -v /var/run/docker.sock:/var/run/docker.sock:ro gcavalcante8808/zbx-docker
 ```
 
 2. Copy userparameter configuration into your include dir, in the case of zabbix-agentd-coreos it is located at /opt/etc/zabbix/zabbix.agentd.conf.d/:

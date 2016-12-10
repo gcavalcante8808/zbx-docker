@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ ! -f /var/run/docker.sock ]; then
     echo "You should provide docker.sock as a ro volume to use this container"

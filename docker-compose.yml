@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+    db:
+      image: gcavalcante8808/zbx-docker
+      container_name: zabbix-docker-monit
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock:ro
+      restart: always
+

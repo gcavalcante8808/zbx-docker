@@ -1,0 +1,25 @@
+machine:
+  services:
+    - docker
+
+stages:
+  - build
+  - test
+
+variables:
+  CONTAINER_TEST_IMAGE: ${STAGING_REGISTRY}/${CI_PROJECT_NAME}:${CI_BUILD_REF_NAME}_${CI_BUILD_REF}_test
+  CONTAINER_RELEASE_IMAGE: ${STAGING_REGISTRY}/${CI_PROJECT_NAME}:latest
+
+build:
+    stage: build
+    script:
+     - docker build -t $CONTAINER_TEST_IMAGE -f scripts/Dockerfile
+
+test:
+    stage: test
+    script:
+     - docker run -d --name zbx-docker-test $CONTAINER_TEST_IMAGE 
+     - docker cp zbx-docker-test:/usr/src/app/dist/docker_discovery .
+     - docker cp zbx-docker-test:/usr/src/app/dist/docker_stats .
+     - ./docker_discovery
+     - ./docker_stats --cid "zbx-docker-test" --attr precpu_stats.cpu_usage.total_usage

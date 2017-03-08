@@ -30,8 +30,9 @@ def get_nested_elements(info, elements):
 def get_container_attr(container_id, attr, addr):
     # Find a container info and return desired attr.
     cli = docker.from_env()
-    container = cli.stats(container_id, stream=False)
-    get_nested_elements(container, attr)
+    container = cli.containers.get(container_id)
+    stats = container.stats(stream=False, decode=True)
+    get_nested_elements(stats, attr)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

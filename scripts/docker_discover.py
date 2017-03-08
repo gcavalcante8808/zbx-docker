@@ -7,8 +7,9 @@ import docker
 def print_discover(addr):
     cli = docker.from_env()
 
-    containers = [ {'{#CONTAINER}': container['Id'], '{#CONTNAME}':  container['Names'][-1:][0].strip('/'), '{#IMAGE}': container['Image'] } 
-               for container in cli.containers(all=True) ]
+    containers = [{'{#CONTAINER}':container.id, '{#CONTNAME}': container.name,
+                   '{#IMAGE}': container.attrs['Config']['Image'], '{#LOGPATH}': container.attrs['LogPath']}
+               for container in cli.containers.list(all=True)]
 
     print(json.dumps({'data': containers}))
 

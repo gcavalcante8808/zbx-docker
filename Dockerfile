@@ -1,6 +1,8 @@
-FROM alpine
-RUN apk add --update python curl && \
-    curl https://bootstrap.pypa.io/get-pip.py | python && \
-    pip install docker-py
-COPY scripts/* /usr/local/src/
-CMD while true; do echo Stub CMD; sleep 100; done
+FROM debian:jessie
+ADD https://github.com/gcavalcante8808/zbx-docker/releases/download/latest/zbx-docker.tar /usr/local/src/zbx-docker.tar
+WORKDIR /usr/local/src
+RUN tar xf zbx-docker.tar && \
+    chmod +x docker_stats docker_discover
+
+CMD while true; do sleep 1000; done
+

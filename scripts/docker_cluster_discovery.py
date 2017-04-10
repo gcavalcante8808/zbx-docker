@@ -19,8 +19,8 @@ def discovery_nodes(cli):
     node_list = cli.nodes.list()
 
     nodes = [{
-               "#NODE_NAME": item.attrs["Description"]["Hostname"],
-               "#NODE_ID": item.id,
+               "{#NODE_NAME}": item.attrs["Description"]["Hostname"],
+               "{#NODE_ID}": item.id,
              }
               for item in node_list]
 
@@ -31,9 +31,9 @@ def discovery_services(cli):
     services_list = cli.services.list()
 
     services = [{
-                 "#SERVICE_ID": item.id,
-                 "#SERVICE_NAME": item.name,
-                 "#SERVICE_HTTPSUPPORT": 
+                 "{#SERVICE_ID}": item.id,
+                 "{#SERVICE_NAME}": item.name,
+                 "{#SERVICE_HTTPSUPPORT}": 
                       item.attrs['Spec']['Labels'].get('com.df.serviceDomain', False)
               } for item in services_list]
 

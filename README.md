@@ -10,10 +10,14 @@ and attr introspection.
 
 With this solution, you can start to monitor your docker containers on your Servers.
 
+Aditionally, you can monitor your docker cluster nodes and services.
+
 Requirements
 ------------
 
 For now, the Zabbix User should have access to the docker socket.
+
+To use docker swarm mode monitoring the target where the userparameters are installed need to be a **manager** of the cluster.
 
 
 Installation - Standard 
@@ -21,37 +25,31 @@ Installation - Standard
 
 To install this solution you'll need to do the following steps:
 
-1. Download the latest version of the binaries into the "/usr/local/src" folder using the command (or similar):
+1. Download the latest version of the binaries into the "/usr/local/share/zabbix/externalscripts" folder using the command (or similar):
 
 ```
-wget https://github.com/gcavalcante8808/zbx-docker/releases/download/latest/zbx-docker.tar -O /usr/local/src/zbx-docker.tar 
+wget https://github.com/gcavalcante8808/zbx-docker/releases/download/0.2a/zbx-docker.tar -O /usr/local/share/zabbix/externalscripts/zbx-docker.tar 
 ```
 
 2. Descompact the file and make each file executable:
 
 ```
-cd /usr/local/src/
-tar xf /usr/local/src/zbx-docker.tar
-chmod +x /usr/local/src/zbx-docker.tar
+cd /usr/local/share/zabbix/externalscripts/
+tar xf /usr/local/share/zabbix/externalscripts/zbx-docker.tar
 ```
 
-3. Install the UserParameters available at https://raw.githubusercontent.com/gcavalcante8808/zbx-docker/master/docker_bare.conf.
+3. Install the UserParameters available at the 'userparameters'.
 
-4. Install the templates available at https://github.com/gcavalcante8808/zbx-docker/tree/master/templates and link the docker server templates.
+4. Install the templates available at the 'templates' folder.
 
-After some minutes (10 by default) new hosts will be created at the Docker Containers Group.
+5. Link the Templates 'Docker Server' against every machine that you want to monitor the docker Containers;
 
+6. Link the Template 'Docker Swarm Manager' against a MANAGER of your cluster;
 
-Installation - Container
-------------------------
+After some minutes (10 by default) new hosts will be created at the Docker Containers Group when using the 'Docker Server' Template.
 
-Instead of losing time copying and configuring things, you can use a container instead. To use the container run the following commands
+For the 'Docker Swarm Manager' template the Nodes and Services will be created at the groups 'Docker Cluster Nodes' and 'Docker Nodes Services'.
 
-```
-docker run -d -v /var/run/docker.sock:/var/run/docker.sock:ro gcavalcante8808/zbx-docker
-```
-
-After this command, install the userparameters available at https://raw.githubusercontent.com/gcavalcante8808/zbx-docker/master/docker.conf and the templates.
 
 Other Notes
 -----------

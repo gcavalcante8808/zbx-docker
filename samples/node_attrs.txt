@@ -13,9 +13,9 @@
                  'Resources': {'MemoryBytes': 1040928768,
                                'NanoCPUs': 1000000000}},
  'ID': 'obvi9z0aaz3qw7kk9mfcv3k01',
- 'ManagerStatus': {'Addr': '10.136.38.110:2377', 'Reachability': 'reachable'},
+ 'ManagerStatus': {'Addr': '', 'Reachability': 'reachable'},
  'Spec': {'Availability': 'drain', 'Role': 'manager'},
- 'Status': {'Addr': '10.136.38.110', 'State': 'ready'},
+ 'Status': {'Addr': '', 'State': 'ready'},
  'UpdatedAt': '2017-04-10T12:31:20.992322009Z',
  'Version': {'Index': 14647}}
 

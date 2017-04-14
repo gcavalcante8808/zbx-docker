@@ -29,8 +29,8 @@ def discovery_nodes(cli):
 
 def extrode_multiple_urls(urls):
     """ Return the last (right) url value """
-    if urls and isinstance(urls,list):
-        return urls[-1]
+    if urls:
+        return urls.split(',')[-1]
     
     return urls
 

@@ -29,7 +29,7 @@ def discovery_nodes(cli):
 
 def extrode_multiple_urls(urls):
     """ Return the last (right) url value """
-    if urls and len(urls) > 1:
+    if urls and isinstance(urls,list):
         return urls[-1]
     
     return urls

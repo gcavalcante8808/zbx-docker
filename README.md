@@ -51,6 +51,33 @@ After some minutes (10 by default) new hosts will be created at the Docker Conta
 For the 'Docker Swarm Manager' template the Nodes and Services will be created at the groups 'Docker Cluster Nodes' and 'Docker Nodes Services'.
 
 
+LLD - Values returned by each Script
+------------------------------------
+
+`docker_discovery.py`
+
+This script can discover all containers created in the given machine. Returned LLD info:
+
+ * {#CONTAINER}: return the container ID, which will be mapped to hostname on zabbix;
+ * {#CONTNAME}: return the container name, which will be mapped to visible hostname on zabbix;
+ * {#IMAGE}: return the image used by container;
+ * {#LOGPATH}: return the log path (usually a json file if you arent using a logger like graylog or fluentd to receive logs);
+ * {#STATE}: the state of the container in the moment of discovery ('running', 'dead', 'exit')
+
+
+`docker_cluster_discovery.py`
+
+This script can discovery all nodes and services on a docker swarm mode cluster. Returned LLD info:
+
+ * When using --resource nodes:
+   * {#NODE_NAME}: Hostname of the node in the swarm cluster;
+   * {#NODE_ID}: The ID given to the node.
+
+ * When using --resource services:
+   * {#SERVICE_ID}: The id of the service in the cluster (as you can see with `docker service ls`);
+   * {#SERVICE_NAME}: The name given to the service;
+   * {#SERVICE_HTTPSUPPORT}: If you service have a label called 'com.df.serviceDomain', the url's are returned here and can be used, for example, to populate macros and web scenarios.
+
 Other Notes
 -----------
 
